@@ -1,0 +1,132 @@
+var helpers = require("../../../../../../AppData/Roaming/nvm/v14.16.1/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "NavbarView", ()=>NavbarView
+);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _navbar = require("react-bootstrap/Navbar");
+var _navbarDefault = parcelHelpers.interopDefault(_navbar);
+var _nav = require("react-bootstrap/Nav");
+var _navDefault = parcelHelpers.interopDefault(_nav);
+var _container = require("react-bootstrap/Container");
+var _containerDefault = parcelHelpers.interopDefault(_container);
+var _button = require("react-bootstrap/Button");
+var _buttonDefault = parcelHelpers.interopDefault(_button);
+var _form = require("react-bootstrap/Form");
+var _formDefault = parcelHelpers.interopDefault(_form);
+var _visibilityFilterInput = require("../visibility-filter-input/visibility-filter-input");
+var _visibilityFilterInputDefault = parcelHelpers.interopDefault(_visibilityFilterInput);
+let logOut = function() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    localStorage.removeItem("email");
+    localStorage.removeItem("birthday");
+    localStorage.removeItem("favoriteMovies");
+    window.open("/", "_self");
+};
+class NavbarView extends _reactDefault.default.Component {
+    constructor(){
+        super();
+    }
+    render() {
+        return(/*#__PURE__*/ _reactDefault.default.createElement(_containerDefault.default, {
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\navbar-view\\navbar-view.jsx",
+                lineNumber: 28
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default, {
+            collapseOnSelect: true,
+            expand: "lg",
+            bg: "dark",
+            variant: "dark",
+            fixed: "top",
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\navbar-view\\navbar-view.jsx",
+                lineNumber: 29
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default.Brand, {
+            href: "/",
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\navbar-view\\navbar-view.jsx",
+                lineNumber: 30
+            },
+            __self: this
+        }, "Marilyn's top 10"), /*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default.Toggle, {
+            "aria-controls": "responsive-navbar-nav",
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\navbar-view\\navbar-view.jsx",
+                lineNumber: 31
+            },
+            __self: this
+        }), /*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default.Collapse, {
+            id: "responsive-navbar-nav",
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\navbar-view\\navbar-view.jsx",
+                lineNumber: 32
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_navDefault.default, {
+            className: "mr-auto",
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\navbar-view\\navbar-view.jsx",
+                lineNumber: 33
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_navDefault.default.Link, {
+            href: "/",
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\navbar-view\\navbar-view.jsx",
+                lineNumber: 34
+            },
+            __self: this
+        }, "Home"), /*#__PURE__*/ _reactDefault.default.createElement(_navDefault.default.Link, {
+            href: "/users/${user}",
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\navbar-view\\navbar-view.jsx",
+                lineNumber: 35
+            },
+            __self: this
+        }, "My Profile")), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default, {
+            inline: true,
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\navbar-view\\navbar-view.jsx",
+                lineNumber: 38
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_visibilityFilterInputDefault.default, {
+            visibilityFilter: this.props.visibilityFilter,
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\navbar-view\\navbar-view.jsx",
+                lineNumber: 39
+            },
+            __self: this
+        }), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+            onClick: ()=>logOut()
+            ,
+            variant: "outline-light",
+            style: {
+                marginLeft: '5px'
+            },
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\navbar-view\\navbar-view.jsx",
+                lineNumber: 40
+            },
+            __self: this
+        }, "Logout"))))));
+    }
+}
+exports.default = NavbarView;
+
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

@@ -10,7 +10,10 @@ export class MovieCard extends React.Component {
   render() {
     const { movie } = this.props;
     return (
-      <Card>
+      <Card style={{
+        margin: '10%',
+        
+      }}>
         <Card.Img variant="top" src={movie.ImagePath} />
         <Card.Body>
           <Card.Title>{movie.Title}</Card.Title>

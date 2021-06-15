@@ -1,0 +1,71 @@
+var helpers = require("../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _col = require("react-bootstrap/Col");
+var _colDefault = parcelHelpers.interopDefault(_col);
+var _row = require("react-bootstrap/Row");
+var _rowDefault = parcelHelpers.interopDefault(_row);
+var _reactRedux = require("react-redux");
+var _visibilityFilterInput = require("../visibility-filter-input/visibility-filter-input");
+var _visibilityFilterInputDefault = parcelHelpers.interopDefault(_visibilityFilterInput);
+var _movieCard = require("../movie-card/movie-card");
+const mapStateToProps = (state)=>{
+    const { visibilityFilter  } = state;
+    return {
+        visibilityFilter
+    };
+};
+function MoviesList(props) {
+    const { movies , visibilityFilter  } = props;
+    let filteredMovies = movies;
+    if (visibilityFilter !== '') filteredMovies = movies.filter((m)=>m.Title.toLowerCase().includes(visibilityFilter.toLowerCase())
+    );
+    if (!movies) return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+        className: "main-view",
+        __source: {
+            fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\movies-list\\movies-list.jsx",
+            lineNumber: 23
+        },
+        __self: this
+    }));
+    return(/*#__PURE__*/ _reactDefault.default.createElement(_reactDefault.default.Fragment, null, /*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
+        __source: {
+            fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\movies-list\\movies-list.jsx",
+            lineNumber: 25
+        },
+        __self: this
+    }, filteredMovies.map((m)=>/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
+            md: 4,
+            key: m._id,
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\movies-list\\movies-list.jsx",
+                lineNumber: 27
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_movieCard.MovieCard, {
+            movie: m,
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\movies-list\\movies-list.jsx",
+                lineNumber: 28
+            },
+            __self: this
+        }))
+    ))));
+}
+_c = MoviesList;
+exports.default = _reactRedux.connect(mapStateToProps)(MoviesList);
+var _c;
+$RefreshReg$(_c, "MoviesList");
+
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

@@ -1,0 +1,344 @@
+var helpers = require("../../../../../../AppData/Roaming/nvm/v14.16.1/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  _parcelHelpers.export(exports, "ProfileView", function () {
+    return ProfileView;
+  });
+  var _react = require('react');
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _reactBootstrapButton = require('react-bootstrap/Button');
+  var _reactBootstrapButtonDefault = _parcelHelpers.interopDefault(_reactBootstrapButton);
+  var _axios = require('axios');
+  var _axiosDefault = _parcelHelpers.interopDefault(_axios);
+  var _reactBootstrapForm = require('react-bootstrap/Form');
+  var _reactBootstrapFormDefault = _parcelHelpers.interopDefault(_reactBootstrapForm);
+  var _reactRouterDom = require('react-router-dom');
+  var _reactBootstrapCard = require('react-bootstrap/Card');
+  var _reactBootstrapCardDefault = _parcelHelpers.interopDefault(_reactBootstrapCard);
+  var _reactBootstrapCol = require('react-bootstrap/Col');
+  var _reactBootstrapColDefault = _parcelHelpers.interopDefault(_reactBootstrapCol);
+  var _navbarViewNavbarView = require("../navbar-view/navbar-view");
+  var _reactRedux = require('react-redux');
+  var _actionsActions = require('../../actions/actions');
+  var _jsxFileName = "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx";
+  class ProfileView extends _reactDefault.default.Component {
+    constructor() {
+      super();
+      this.state = {
+        username: "",
+        password: "",
+        email: "",
+        birthday: "",
+        favoriteMovies: [],
+        movies: ""
+      };
+    }
+    componentDidMount() {
+      let accessToken = localStorage.getItem('token');
+      this.getUser(accessToken);
+    }
+    getUser(token) {
+      let url = 'https://cnjlv.herokuapp.com/users/' + localStorage.getItem('user');
+      _axiosDefault.default.get(url, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }).then(response => {
+        this.setState({
+          username: response.data.Username,
+          password: response.data.Password,
+          email: response.data.Email,
+          birthday: response.data.Birthday,
+          favoriteMovies: response.data.FavoriteMovies
+        });
+      });
+    }
+    removeFavorite(movie) {
+      let token = localStorage.getItem('token');
+      let url = 'https://cnjlv.herokuapp.com/users/' + localStorage.getItem('user') + '/favorites/' + movie._id;
+      _axiosDefault.default.delete(url, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }).then(response => {
+        alert('Movie was removed');
+        this.componentDidMount();
+      });
+    }
+    handleDelete() {
+      let token = localStorage.getItem("token");
+      let user = localStorage.getItem("user");
+      _axiosDefault.default.delete(`https://cnjlv.herokuapp.com/users/${user}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }).then(() => {
+        alert(user + " was deleted");
+        localStorage.removeItem("user");
+        localStorage.removeItem("token");
+        window.location.pathname = "/";
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }
+    render() {
+      const {movies, onBackClick} = this.props;
+      const favoriteMovieList = movies.filter(movie => {
+        return this.state.favoriteMovies.includes(movie._id);
+      });
+      return (
+        /*#__PURE__*/_reactDefault.default.createElement("div", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 90,
+            columnNumber: 7
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement("div", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 91,
+            columnNumber: 7
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement(_navbarViewNavbarView.NavbarView, {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 92,
+            columnNumber: 7
+          }
+        })), /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapFormDefault.default, {
+          style: {
+            marginTop: '70px'
+          },
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 94,
+            columnNumber: 9
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapFormDefault.default.Group, {
+          controlId: "formBasicUsername",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 97,
+            columnNumber: 11
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement("h4", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 98,
+            columnNumber: 13
+          }
+        }, "Username: "), /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapFormDefault.default.Label, {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 99,
+            columnNumber: 13
+          }
+        }, this.state.username)), /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapFormDefault.default.Group, {
+          controlId: "formBasicEmail",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 101,
+            columnNumber: 11
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement("h4", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 102,
+            columnNumber: 13
+          }
+        }, "Email:"), /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapFormDefault.default.Label, {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 103,
+            columnNumber: 13
+          }
+        }, this.state.email)), /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapFormDefault.default.Group, {
+          controlId: "formBasicDate",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 105,
+            columnNumber: 11
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement("h4", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 106,
+            columnNumber: 13
+          }
+        }, "Date of Birth:"), /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapFormDefault.default.Label, {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 107,
+            columnNumber: 13
+          }
+        }, this.state.birthday)), /*#__PURE__*/_reactDefault.default.createElement(_reactRouterDom.Link, {
+          to: `/update/${this.state.username}`,
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 109,
+            columnNumber: 11
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapButtonDefault.default, {
+          variant: "dark",
+          style: {
+            margin: '5px'
+          },
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 110,
+            columnNumber: 13
+          }
+        }, "Edit Information")), /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapButtonDefault.default, {
+          variant: "dark",
+          onClick: () => {
+            this.handleDelete();
+          },
+          style: {
+            margin: '5px'
+          },
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 114,
+            columnNumber: 11
+          }
+        }, "Delete Profile"), /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapButtonDefault.default, {
+          variant: "dark",
+          onClick: () => {
+            onBackClick();
+          },
+          style: {
+            margin: '5px'
+          },
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 117,
+            columnNumber: 11
+          }
+        }, "Back")), /*#__PURE__*/_reactDefault.default.createElement("div", {
+          style: {
+            margin: '5px'
+          },
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 121,
+            columnNumber: 9
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement("h5", {
+          style: {
+            margin: '5px'
+          },
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 124,
+            columnNumber: 11
+          }
+        }, "Favorite Movies:"), favoriteMovieList.map(movie => {
+          return (
+            /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapColDefault.default, {
+              md: 3,
+              key: movie._id,
+              __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 129,
+                columnNumber: 15
+              }
+            }, /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapCardDefault.default, {
+              __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 130,
+                columnNumber: 17
+              }
+            }, /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapCardDefault.default.Img, {
+              variant: "top",
+              src: movie.ImagePath,
+              __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 131,
+                columnNumber: 19
+              }
+            }), /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapCardDefault.default.Body, {
+              __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 132,
+                columnNumber: 19
+              }
+            }, /*#__PURE__*/_reactDefault.default.createElement(_reactRouterDom.Link, {
+              to: `/movies/${movie._id}`,
+              __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 133,
+                columnNumber: 21
+              }
+            }, /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapCardDefault.default.Title, {
+              __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 134,
+                columnNumber: 23
+              }
+            }, movie.Title)))), /*#__PURE__*/_reactDefault.default.createElement("div", {
+              __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 138,
+                columnNumber: 17
+              }
+            }, /*#__PURE__*/_reactDefault.default.createElement(_reactBootstrapButtonDefault.default, {
+              variant: "dark",
+              onClick: () => this.removeFavorite(movie),
+              style: {
+                margin: '5px'
+              },
+              __self: this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 139,
+                columnNumber: 17
+              }
+            }, "Remove")))
+          );
+        })))
+      );
+    }
+  }
+  let mapStateToProps = state => {
+    return {
+      users: state.users
+    };
+  };
+  exports.default = _reactRedux.connect(mapStateToProps, {
+    setUser: _actionsActions.setUser
+  })(ProfileView);
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

@@ -1,0 +1,208 @@
+var helpers = require("../../../../../../AppData/Roaming/nvm/v14.16.1/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "MovieView", ()=>MovieView
+);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _axios = require("axios");
+var _axiosDefault = parcelHelpers.interopDefault(_axios);
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _button = require("react-bootstrap/Button");
+var _buttonDefault = parcelHelpers.interopDefault(_button);
+var _card = require("react-bootstrap/Card");
+var _cardDefault = parcelHelpers.interopDefault(_card);
+var _reactRouterDom = require("react-router-dom");
+var _movieViewScss = require("./movie-view.scss");
+var _navbarView = require("../navbar-view/navbar-view");
+class MovieView extends _reactDefault.default.Component {
+    constructor(){
+        super();
+        this.state = {
+        };
+    }
+    addFavorite(movie) {
+        let token = localStorage.getItem("token");
+        let url = "https://cnjlv.herokuapp.com/users/" + localStorage.getItem("user") + "/movies/" + movie._id;
+        console.log(token);
+        _axiosDefault.default.post(url, "", {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response)=>{
+            console.log(response);
+            // window.open("/", "_self");
+            window.open("/users/" + localStorage.getItem("user"), "_self");
+            alert("Added to favorites!");
+        });
+    }
+    render() {
+        const { movie , onBackClick  } = this.props;
+        return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "movie-view",
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 44
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 45
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_navbarView.NavbarView, {
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 46
+            },
+            __self: this
+        })), /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default, {
+            style: {
+                width: '50%',
+                height: '50%',
+                border: 'solid 1px black',
+                marginTop: '30px',
+                marginBottom: '30px'
+            },
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 48
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Img, {
+            variant: "top",
+            src: movie.ImagePath,
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 57
+            },
+            __self: this
+        }), /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Body, {
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 61
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Title, {
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 62
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("h1", {
+            className: "label",
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 63
+            },
+            __self: this
+        }, movie.Title, " ")), /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Text, {
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 65
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "label",
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 66
+            },
+            __self: this
+        }, movie.Description)), /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Text, {
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 68
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "label",
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 69
+            },
+            __self: this
+        }, "Genre: "), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
+            to: `/genres/${movie.Genre.Name}`,
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 71
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "value",
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 72
+            },
+            __self: this
+        }, movie.Genre.Name))), /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Text, {
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 75
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "label",
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 76
+            },
+            __self: this
+        }, "Director: "), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
+            to: `/directors/${movie.Director.Name}`,
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 77
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "value",
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 78
+            },
+            __self: this
+        }, movie.Director.Name))), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+            variant: "dark",
+            style: {
+                marginBottom: '8px'
+            },
+            onClick: ()=>this.addFavorite(movie)
+            ,
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 81
+            },
+            __self: this
+        }, "Add to Favorites"), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
+            to: `/`,
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 88
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+            block: true,
+            variant: "dark",
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 89
+            },
+            __self: this
+        }, "Back to the list"))))));
+    }
+}
+
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

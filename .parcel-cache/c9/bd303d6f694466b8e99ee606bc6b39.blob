@@ -1,0 +1,7 @@
+.my-flix {
+  color: steelblue;
+}
+
+.homePage {
+  margin-top: 80px;
+}

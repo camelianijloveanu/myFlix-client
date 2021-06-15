@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import {NavbarView} from "../navbar-view/navbar-view";
+import { connect } from 'react-redux';
+import { setUser } from '../../actions/actions';
 
 export class ProfileView extends React.Component {
 
@@ -105,13 +107,23 @@ export class ProfileView extends React.Component {
             <Form.Label>{this.state.birthday}</Form.Label>
           </Form.Group>
           <Link to={`/update/${this.state.username}`}>
-            <Button variant="dark">Edit Information</Button>
+            <Button variant="dark" style={{
+                  margin: '5px',
+                }}>Edit Information</Button>
           </Link>
-          <Button variant="dark" onClick={() => { this.handleDelete() }}>Delete Profile</Button>
-          <Button variant="dark" onClick={() => { onBackClick() }}>Back</Button>
+          <Button variant="dark" onClick={() => { this.handleDelete() }} style={{
+                  margin: '5px',
+                }}>Delete Profile</Button>
+          <Button variant="dark" onClick={() => { onBackClick() }} style={{
+                  margin: '5px',
+                }}>Back</Button>
         </Form>
-        <div>
-          <h5>Favorite Movies:</h5>
+        <div style={{
+                  margin: '5px',
+                }}>
+          <h5 style={{
+                  margin: '5px',
+                }}>Favorite Movies:</h5>
           {favoriteMovieList.map((movie) => {
             return (
               <Col md={3} key={movie._id}>
@@ -124,7 +136,9 @@ export class ProfileView extends React.Component {
                   </Card.Body>
                 </Card>
                 <div>
-                <Button variant="dark" onClick={() => this.removeFavorite(movie)}>
+                <Button variant="dark" onClick={() => this.removeFavorite(movie)} style={{
+                  margin: '5px',
+                }}>
                   Remove
                 </Button>
                 </div>
@@ -136,3 +150,9 @@ export class ProfileView extends React.Component {
     )
   }
 }
+
+let mapStateToProps = state => {
+  return { users: state.users }
+}
+
+export default connect(mapStateToProps, { setUser } )(ProfileView);

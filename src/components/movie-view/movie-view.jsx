@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import "./movie-view.scss";
 import {NavbarView} from "../navbar-view/navbar-view";
@@ -40,41 +41,62 @@ export class MovieView extends React.Component {
     const { movie, onBackClick } = this.props;
 
     return (
-      <div>
-      <div>
-      <NavbarView />
-    </div>
-      <div className="movie-view" style={{
-                  marginTop: '70px',
-                }}>
-        <div className="movie-image">
-          <img src={movie.ImagePath} />
-        </div>
-        <div className="movie-title">
-          <span className="label">Title: </span>
-          <span className="value">{movie.Title}</span>
-        </div>
-        <div className="movie-description">
-          <span className="label">Description: </span>
-          <span className="value">{movie.Description}</span>
-        </div>
-        <Link to={`/directors/${movie.Director.Name}`}>
-          <Button variant="dark">{movie.Director.Name}</Button>
-        </Link>
-        <div>
-              <Button
-                variant="dark"
-                onClick={() => this.addFavorite(movie)}
-              >
-                Add to Favorites
-              </Button>
-            </div>
-        <Link to={`/genres/${movie.Genre.Name}`}>
-          <Button variant="dark">{movie.Genre.Name}</Button>
-        </Link>
-        <Button variant="dark" onClick={() => { onBackClick(null) }}>Back</Button>
+      <div className="movie-view">
+          <div>
+        <NavbarView />
       </div>
+        <Card
+          style={{
+            width: '50%',
+            height: '50%',
+            border: 'solid 1px black',
+            marginTop: '30px',
+            marginBottom: '30px',
+          }}
+        >
+          <Card.Img
+            variant="top"
+            src={movie.ImagePath}
+          />
+          <Card.Body>
+            <Card.Title>
+              <h1 className="label">{movie.Title} </h1>
+            </Card.Title>
+            <Card.Text>
+              <span className="label">{movie.Description}</span>
+            </Card.Text>
+            <Card.Text>
+              <span className="label">Genre: </span>
+    
+              <Link to={`/genres/${movie.Genre.Name}`}>
+                <span className="value">{movie.Genre.Name}</span>
+              </Link>
+            </Card.Text>
+            <Card.Text>
+              <span className="label">Director: </span>
+              <Link to={`/directors/${movie.Director.Name}`}>
+                <span className="value">{movie.Director.Name}</span>
+              </Link>
+            </Card.Text>
+            <Button
+                    variant="dark"
+                    style={{ marginBottom: '8px' }}
+                    onClick={() => this.addFavorite(movie)}
+                  >
+                    Add to Favorites
+                  </Button>
+            <Link to={`/`}>
+              <Button
+                block
+                variant="dark"
+              >
+                Back to the list
+              </Button>
+            </Link>
+          </Card.Body>
+        </Card>
       </div>
     );
     }
-}
+    }
+    

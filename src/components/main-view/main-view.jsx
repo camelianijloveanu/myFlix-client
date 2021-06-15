@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
@@ -18,15 +18,20 @@ import { ProfileView } from '../profile-view/profile-view';
 import { ProfileUpdate } from '../profile-update/profile-update';
 import {NavbarView} from "../navbar-view/navbar-view";
 
+import { connect } from 'react-redux';
+
+import { setMovies } from '../../actions/actions';
+import MoviesList from '../movies-list/movies-list';
+import VisibilityFilterInput from '../visibility-filter-input/visibility-filter-input';
+
 
 import "./main-view.scss";
 
-export class MainView extends React.Component {
+class MainView extends React.Component {
 
   constructor() {
     super();
     this.state = {
-      movies: [],
       user: null
     };
   }
@@ -60,10 +65,7 @@ export class MainView extends React.Component {
       headers: { Authorization: `Bearer ${token}`}
     })
     .then(response => {
-      // Assign the result to the state
-      this.setState({
-        movies: response.data
-      });
+      this.props.setMovies(response.data);
     })
     .catch(function (error) {
       console.log(error);
@@ -76,7 +78,6 @@ export class MainView extends React.Component {
       user: null,
     });
     console.log("logout successful");
-    window.open("/", "_self");
   }
 
     updateUser(data) {
@@ -88,7 +89,9 @@ export class MainView extends React.Component {
 
 
  render() {
-    const { movies, user } = this.state;
+  let { movies, visibilityFilter, } = this.props;
+  let { user } = this.state;
+
 
 
     return (
@@ -97,32 +100,19 @@ export class MainView extends React.Component {
 
         <Row className="main-view justify-content-md-center">
           
-          <Route exact path='/' render={() => {
-              if (!user) return <Col md={6}>
-                <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+        <Route exact path="/" render={()=> {
+
+          if (!user){ return <Col>
+          <LoginView onLoggedIn={user=> this.onLoggedIn(user)} />
+            </Col>}
+
+            return(
+            <div>
+              <NavbarView />
+              <Col md={12}>
+              <MoviesList movies={movies}/>
               </Col>
-
-              return(
-              <div>
-                <NavbarView />
-                <Row>
-                  {movies.map(m => (
-                  <Col md={4} key={m._id} style={{
-                    marginTop: '70px',
-                  }}>
-                  <MovieCard movie={m} />
-                  </Col>)
-                  )}
-                </Row>
-              </div>)
-
-              if (movies.length === 0) return <div className="main-view" />
-
-              return movies.map(m => (
-                <Col md={4} key={m._id} >
-                  <MovieCard movie={m} />
-                </Col>
-              ))
+            </div>)
             }} />
 
             <Route path="/register" render={() => {
@@ -205,3 +195,9 @@ export class MainView extends React.Component {
   );
 }
 }
+
+let mapStateToProps = state => {
+  return { movies: state.movies }
+}
+
+export default connect(mapStateToProps, { setMovies } )(MainView);

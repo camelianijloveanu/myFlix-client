@@ -1,0 +1,16 @@
+
+
+.movie-view {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.my-flix {
+  color: steelblue;
+}
+
+.homePage {
+  margin-top: 80px;
+}
+/*# sourceMappingURL=index.HASH_REF_7070e1bf1740ace75ae861e1c288ca04.css.map */

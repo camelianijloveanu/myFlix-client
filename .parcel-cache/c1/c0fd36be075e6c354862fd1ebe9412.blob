@@ -1,0 +1,314 @@
+var helpers = require("../../../../../../AppData/Roaming/nvm/v14.16.1/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "ProfileView", ()=>ProfileView
+);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _button = require("react-bootstrap/Button");
+var _buttonDefault = parcelHelpers.interopDefault(_button);
+var _axios = require("axios");
+var _axiosDefault = parcelHelpers.interopDefault(_axios);
+var _form = require("react-bootstrap/Form");
+var _formDefault = parcelHelpers.interopDefault(_form);
+var _reactRouterDom = require("react-router-dom");
+var _card = require("react-bootstrap/Card");
+var _cardDefault = parcelHelpers.interopDefault(_card);
+var _col = require("react-bootstrap/Col");
+var _colDefault = parcelHelpers.interopDefault(_col);
+var _navbarView = require("../navbar-view/navbar-view");
+var _reactRedux = require("react-redux");
+var _actions = require("../../actions/actions");
+class ProfileView extends _reactDefault.default.Component {
+    constructor(){
+        super();
+        this.state = {
+            username: "",
+            password: "",
+            email: "",
+            birthday: "",
+            favoriteMovies: [],
+            movies: ""
+        };
+    }
+    componentDidMount() {
+        let accessToken = localStorage.getItem('token');
+        this.getUser(accessToken);
+    }
+    getUser(token) {
+        let url = 'https://cnjlv.herokuapp.com/users/' + localStorage.getItem('user');
+        _axiosDefault.default.get(url, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response)=>{
+            this.setState({
+                username: response.data.Username,
+                password: response.data.Password,
+                email: response.data.Email,
+                birthday: response.data.Birthday,
+                favoriteMovies: response.data.FavoriteMovies
+            });
+        });
+    }
+    removeFavorite(movie) {
+        let token = localStorage.getItem('token');
+        let url = 'https://cnjlv.herokuapp.com/users/' + localStorage.getItem('user') + '/favorites/' + movie._id;
+        _axiosDefault.default.delete(url, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response)=>{
+            alert('Movie was removed');
+            this.componentDidMount();
+        });
+    }
+    handleDelete() {
+        let token = localStorage.getItem("token");
+        let user = localStorage.getItem("user");
+        _axiosDefault.default.delete(`https://cnjlv.herokuapp.com/users/${user}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then(()=>{
+            alert(user + " was deleted");
+            localStorage.removeItem("user");
+            localStorage.removeItem("token");
+            window.location.pathname = "/";
+        }).catch(function(error) {
+            console.log(error);
+        });
+    }
+    render() {
+        const { movies , onBackClick  } = this.props;
+        const favoriteMovieList = movies.filter((movie)=>{
+            return this.state.favoriteMovies.includes(movie._id);
+        });
+        return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 90
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 91
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_navbarView.NavbarView, {
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 92
+            },
+            __self: this
+        })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default, {
+            style: {
+                marginTop: '70px'
+            },
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 94
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
+            controlId: "formBasicUsername",
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 97
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("h4", {
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 98
+            },
+            __self: this
+        }, "Username: "), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 99
+            },
+            __self: this
+        }, this.state.username)), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
+            controlId: "formBasicEmail",
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 101
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("h4", {
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 102
+            },
+            __self: this
+        }, "Email:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 103
+            },
+            __self: this
+        }, this.state.email)), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
+            controlId: "formBasicDate",
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 105
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("h4", {
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 106
+            },
+            __self: this
+        }, "Date of Birth:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 107
+            },
+            __self: this
+        }, this.state.birthday)), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
+            to: `/update/${this.state.username}`,
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 109
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+            variant: "dark",
+            style: {
+                margin: '5px'
+            },
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 110
+            },
+            __self: this
+        }, "Edit Information")), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+            variant: "dark",
+            onClick: ()=>{
+                this.handleDelete();
+            },
+            style: {
+                margin: '5px'
+            },
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 114
+            },
+            __self: this
+        }, "Delete Profile"), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+            variant: "dark",
+            onClick: ()=>{
+                onBackClick();
+            },
+            style: {
+                margin: '5px'
+            },
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 117
+            },
+            __self: this
+        }, "Back")), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            style: {
+                margin: '5px'
+            },
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 121
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("h5", {
+            style: {
+                margin: '5px'
+            },
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 124
+            },
+            __self: this
+        }, "Favorite Movies:"), favoriteMovieList.map((movie)=>{
+            return(/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
+                md: 3,
+                key: movie._id,
+                __source: {
+                    fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                    lineNumber: 129
+                },
+                __self: this
+            }, /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default, {
+                __source: {
+                    fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                    lineNumber: 130
+                },
+                __self: this
+            }, /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Img, {
+                variant: "top",
+                src: movie.ImagePath,
+                __source: {
+                    fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                    lineNumber: 131
+                },
+                __self: this
+            }), /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Body, {
+                __source: {
+                    fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                    lineNumber: 132
+                },
+                __self: this
+            }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
+                to: `/movies/${movie._id}`,
+                __source: {
+                    fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                    lineNumber: 133
+                },
+                __self: this
+            }, /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Title, {
+                __source: {
+                    fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                    lineNumber: 134
+                },
+                __self: this
+            }, movie.Title)))), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+                __source: {
+                    fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                    lineNumber: 138
+                },
+                __self: this
+            }, /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+                variant: "dark",
+                onClick: ()=>this.removeFavorite(movie)
+                ,
+                style: {
+                    margin: '5px'
+                },
+                __source: {
+                    fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\profile-view\\profile-view.jsx",
+                    lineNumber: 139
+                },
+                __self: this
+            }, "Remove"))));
+        }))));
+    }
+}
+let mapStateToProps = (state)=>{
+    return {
+        users: state.users
+    };
+};
+exports.default = _reactRedux.connect(mapStateToProps, {
+    setUser: _actions.setUser
+})(ProfileView);
+
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

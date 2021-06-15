@@ -1,0 +1,105 @@
+var helpers = require("../../../../../../AppData/Roaming/nvm/v14.16.1/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "GenreView", ()=>GenreView
+);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _button = require("react-bootstrap/Button");
+var _buttonDefault = parcelHelpers.interopDefault(_button);
+var _card = require("react-bootstrap/Card");
+var _cardDefault = parcelHelpers.interopDefault(_card);
+var _navbarView = require("../navbar-view/navbar-view");
+class GenreView extends _reactDefault.default.Component {
+    render() {
+        const { genre , movies , onBackClick  } = this.props;
+        return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\genre-view\\genre-view.jsx",
+                lineNumber: 12
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\genre-view\\genre-view.jsx",
+                lineNumber: 13
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_navbarView.NavbarView, {
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\genre-view\\genre-view.jsx",
+                lineNumber: 14
+            },
+            __self: this
+        })), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "genre-view",
+            style: {
+                marginTop: '70px',
+                width: '100%'
+            },
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\genre-view\\genre-view.jsx",
+                lineNumber: 16
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "genre-name",
+            style: {
+                fontSize: '22px',
+                display: 'flex',
+                justifyContent: 'center',
+                marginBottom: '5px'
+            },
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\genre-view\\genre-view.jsx",
+                lineNumber: 20
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "value",
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\genre-view\\genre-view.jsx",
+                lineNumber: 26
+            },
+            __self: this
+        }, genre.Name)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "genre-description",
+            style: {
+                marginBottom: '5px'
+            },
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\genre-view\\genre-view.jsx",
+                lineNumber: 28
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "value",
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\genre-view\\genre-view.jsx",
+                lineNumber: 31
+            },
+            __self: this
+        }, genre.Description)), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+            variant: "dark",
+            onClick: ()=>{
+                onBackClick(null);
+            },
+            __source: {
+                fileName: "C:\\Users\\camel\\Documents\\GitHub\\myFlix-client\\src\\components\\genre-view\\genre-view.jsx",
+                lineNumber: 33
+            },
+            __self: this
+        }, "Back"))));
+    }
+}
+
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

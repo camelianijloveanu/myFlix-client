@@ -113,7 +113,9 @@ export function RegistrationView(props) {
 
       
       <Link to={`/`}>
-        <Button variant="dark">Login</Button>
+        <Button variant="dark" style={{
+                      marginLeft: '5px',
+                    }}>Login</Button>
       </Link>
     </Form>
   );

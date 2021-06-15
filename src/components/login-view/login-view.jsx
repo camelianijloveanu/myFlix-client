@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -55,13 +56,40 @@ export function LoginView(props) {
   };
 
   return (
-  <Form>
-      <Form.Group controlId="formUsername">
-        <Form.Label>Username</Form.Label>
-        <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
-      </Form.Group>
+    <Container>
+      <h1
+        style={{
+          textAlign: 'center',
+          fontWeight: 'bold',
+          letterSpacing: '10px',
+          paddingTop: '50px',
+        }}
+      >
+        Marilyn's top 10
+      </h1>
+      <Form style={{
+        justifyContent: 'center',
+        paddingTop: '8%'
+      }}>
+          <Form.Group controlId="formUsername" >
+            <Form.Label>Username</Form.Label>
+            <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
+          </Form.Group>
 
-     {Object.keys(usernameError).map((key) => {
+        {Object.keys(usernameError).map((key) => {
+              return (
+                <div key={key}>
+                  {usernameError[key]}
+                </div>
+              );
+            })}
+
+          <Form.Group controlId="formPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control type="password" onChange={e => setPassword(e.target.value)} />
+          </Form.Group>
+
+          {Object.keys(passwordError).map((key) => {
           return (
             <div key={key}>
               {usernameError[key]}
@@ -69,25 +97,15 @@ export function LoginView(props) {
           );
         })}
 
-      <Form.Group controlId="formPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" onChange={e => setPassword(e.target.value)} />
-      </Form.Group>
+          <Button variant="dark" type="submit" onClick={handleSubmit}>Login</Button>
 
-      {Object.keys(passwordError).map((key) => {
-      return (
-        <div key={key}>
-          {usernameError[key]}
-        </div>
-      );
-    })}
-
-      <Button variant="dark" type="submit" onClick={handleSubmit}>Login</Button>
-
-      <Link to={`/register`}>
-        <Button variant="dark" >New here? Register</Button>
-      </Link>
-    </Form>
+          <Link to={`/register`}>
+            <Button variant="dark" style={{
+                      marginLeft: '5px',
+                    }}>New here? Register</Button>
+          </Link>
+        </Form>
+    </Container>
   );
 }
 
